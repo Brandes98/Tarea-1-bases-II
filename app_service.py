@@ -15,13 +15,12 @@ class AppService:
         return data
     
     def get_task_ids(self):
-        task_ids = self.database.get_task_ids()  # Asumiendo que tienes una función get_task_ids() en tu Database
+        task_ids = self.database.get_task_ids() 
         return task_ids
     
     def get_task_by_id(self, id):
         task_id = self.database.get_task_by_id(id)  
         return task_id
-
 
     def update_task(self, id, title, desc):
         self.database.update_task(id, title, desc)
@@ -44,9 +43,6 @@ class AppService:
             return user
         return None
 
-     
     def get_user_ids(self):
-        # Lógica para obtener los IDs de usuario desde la base de datos
-        # Supongamos que tienes un método en tu base de datos para obtener los IDs de usuario
-        user_ids = self.database.get_user_ids()  # Implementa este método en tu clase Database
+        user_ids = self.database.get_user_ids()  
         return user_ids

@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <title>Main Page</title>
 </head>
 <body>
-    <h1>Welcome to the Main Page</h1>
-    
-   
+    <h1>Bienvenido!</h1>
 
     <h2>Tasks</h2>
     
@@ -25,7 +24,7 @@
         <select id="usuario_id" name="usuario_id">
         
     </select><br>
-        <input type="submit" value="Create Task">
+        <input type="submit" class="btn btn-success" onclick="redirectToTask()" value="Create Task">
     </form>
 
     <script>
@@ -79,6 +78,10 @@
 
         
         fetchTasks();
+
+        function redirectToTask(){
+            window.location.href = '/tasks';
+        }
 
         
         function loadUserIDs() {

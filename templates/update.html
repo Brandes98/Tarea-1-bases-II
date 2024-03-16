@@ -32,11 +32,7 @@
 
             var titleValue = document.getElementById("title").value;
             var descriptionValue = document.getElementById("description").value;
-
-            // Codificar los datos en la URL como parámetros de consulta
             var queryParams = '?newTitle=' + encodeURIComponent(titleValue) + '&newDesc=' + encodeURIComponent(descriptionValue);
-
-            // Redirigir al usuario a la página de actualización con los datos codificados en la URL
             window.location.href = '/tasks-update-done/' + taskId + queryParams;
         }
     </script>

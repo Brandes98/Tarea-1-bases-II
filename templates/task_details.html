@@ -1,60 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Task ID Selector</title>
 </head>
+
 <body>
     <h1>Select Task ID</h1>
 
     <label for="taskID">Select Task ID:</label>
     <select id="taskID">
-        <!-- Options will be added dynamically with JavaScript -->
     </select>
 
-    <button onclick="getTaskDetails()">Get Task Details</button>
+    <button onclick="getTaskDetails('taskID')">Get Task Details</button>
 
     <script>
-        // Function to load task IDs into the combobox
-        // Function to load task IDs into the combobox
-    function loadTaskIDs() {
-        fetch('/task_ids')
-        .then(response => response.json())
-        .then(taskIDs => {
-            var selectElement = document.getElementById('taskID');
-            selectElement.innerHTML = ''; // Clear options before adding new ones
+        function loadTaskIDs() {
+            fetch('/task_ids')
+                .then(response => response.json())
+                .then(taskIDs => {
+                    var selectElement = document.getElementById('taskID');
+                    selectElement.innerHTML = ''; 
+                    taskIDs.forEach(taskID => {
+                        var option = document.createElement('option');
+                        option.value = taskID;
+                        option.textContent = taskID;
+                        selectElement.appendChild(option);
+                    });
+                })
+                .catch(error => console.error('Error:', error));
+        }
 
-            // Add each task ID as an option in the combobox
-            taskIDs.forEach(taskID => {
-                var option = document.createElement('option');
-                option.value = taskID;
-                option.textContent = taskID;
-                selectElement.appendChild(option);
-            });
-        })
-        .catch(error => console.error('Error:', error));
-    }
-
-
-        // Call loadTaskIDs() when the page is initially loaded
         loadTaskIDs();
 
-        // Function to get task details when the button is clicked
-        function getTaskDetails() {
-        var selectedTaskID = document.getElementById('taskID').value;
+        function getTaskDetails(taskId) {
+            var selectedTaskID = document.getElementById('taskID').value;
 
-        // Realizar una solicitud al servidor
-        fetch(`/task_details/${selectedTaskID}`)
-            .then(response => response.json())
-            .then(data => {
-                // Manejar los detalles de la tarea recibidos del servidor
-                console.log(data); // Puedes mostrar los detalles en la consola para probar
-                // Aquí puedes actualizar la interfaz de usuario para mostrar los detalles
-            })
-            .catch(error => console.error('Error:', error));
-    }
+            window.location.href = '/tasks_details/' + selectedTaskID;
+        }
 
     </script>
 </body>
+
 </html>

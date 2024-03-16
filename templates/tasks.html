@@ -38,6 +38,7 @@
             {% endfor %}
         </tbody>
     </table>
+    <button class="btn btn-dark" onclick="goBackMenu()">Main Menu</button>
     <script>
         function changeStatusTask(taskId) {
             window.location.href = '/tasks-changed/' + taskId; 
@@ -48,6 +49,9 @@
         }
         function deleteTask(taskId) {
             window.location.href = '/tasks-delete/' + taskId; 
+        }
+        function goBackMenu() {
+            window.location.href = '/main_menu'; 
         }
     </script>
 </body>
